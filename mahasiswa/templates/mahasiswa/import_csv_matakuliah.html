@@ -1,0 +1,23 @@
+{% extends "mahasiswa/base.html" %}
+{% block content %}
+
+<h2>Import Data Mata Kuliah (CSV)</h2>
+
+<p>
+CSV harus berisi:
+<strong>nama_mk, kode_mk, sks, semester, nidn_dosen</strong>
+</p>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<a href="{% url 'matakuliah_list' %}">← Kembali</a>
+
+{% endblock %}

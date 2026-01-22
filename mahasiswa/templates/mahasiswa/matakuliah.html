@@ -1,0 +1,83 @@
+{% extends 'mahasiswa/base.html' %}
+{% block title %}Mata Kuliah{% endblock %}
+
+{% block content %}
+<h1>Daftar Mata Kuliah</h1>
+
+<!-- =========================
+     TOOLBAR
+========================= -->
+<div class="toolbar">
+  <div class="toolbar-left">
+    <h3>Daftar Mata Kuliah</h3>
+  </div>
+
+  <div class="toolbar-right">
+    <a href="{% url 'input_matakuliah' %}" class="btn btn-primary">
+      ➕ Tambah Mata Kuliah
+    </a>
+
+    <a href="{% url 'import_csv_matakuliah' %}" class="btn btn-warning">
+      ⬆ Import CSV
+    </a>
+
+    <a href="{% url 'export_csv_matakuliah' %}" class="btn btn-success">
+      ⬇ Export CSV
+    </a>
+  </div>
+</div>
+
+<!-- =========================
+     TABEL MATA KULIAH
+========================= -->
+<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Nama MK</th>
+      <th>Kode MK</th>
+      <th>SKS</th>
+      <th>Semester</th>
+      <th>Dosen</th>
+      <th class="aksi">Aksi</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for mk in matakuliah %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ mk.nama_mk }}</td>
+      <td>{{ mk.kode_mk }}</td>
+      <td>{{ mk.sks }}</td>
+      <td>{{ mk.semester }}</td>
+      <td>{{ mk.dosen.nama }}</td>
+
+      <td class="aksi">
+        <div class="aksi-wrapper">
+          <a href="{% url 'edit_matakuliah' mk.id %}" class="btn-edit">
+            ✏️ Edit
+          </a>
+
+          <form method="post"
+                action="{% url 'delete_matakuliah' mk.id %}"
+                onsubmit="return confirm('Yakin ingin menghapus mata kuliah ini?')">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete">
+              🗑️ Delete
+            </button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="7" style="text-align:center;">
+        Belum ada data mata kuliah
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

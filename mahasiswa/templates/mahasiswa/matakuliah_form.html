@@ -1,0 +1,87 @@
+{% extends 'mahasiswa/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<style>
+.card {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 24px 28px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, select {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+.full {
+  grid-column: span 2;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+</style>
+
+<div class="card">
+  <h2 style="margin-bottom:18px">{{ title }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Nama MK</label>
+        {{ form.nama_mk }}
+      </div>
+
+      <div class="form-group">
+        <label>Kode</label>
+        {{ form.kode_mk }}
+      </div>
+
+      <div class="form-group">
+        <label>SKS</label>
+        {{ form.sks }}
+      </div>
+
+      <div class="form-group">
+        <label>Semester</label>
+        {{ form.semester }}
+      </div>
+
+      <div class="form-group full">
+        <label>Dosen</label>
+        {{ form.dosen }}
+      </div>
+    </div>
+
+    <div class="actions">
+      <a href="{% url 'matakuliah_list' %}" class="btn-secondary">
+        ← Kembali
+      </a>
+      <button class="btn-primary">💾 Simpan</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

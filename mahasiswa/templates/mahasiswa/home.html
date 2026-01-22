@@ -1,0 +1,79 @@
+{% extends 'mahasiswa/base.html' %}
+{% block title %}Mahasiswa{% endblock %}
+
+{% block content %}
+<h1>Daftar Mahasiswa</h1>
+
+<!-- =========================
+     TOOLBAR ATAS
+========================= -->
+<div class="toolbar">
+  <div class="toolbar-left">
+    <h3>Daftar Mahasiswa</h3>
+  </div>
+
+  <div class="toolbar-right">
+    <a href="{% url 'input_mahasiswa' %}" class="btn btn-primary">
+      ➕ Tambah Mahasiswa
+    </a>
+
+    <a href="{% url 'import_csv' %}" class="btn btn-warning">
+      ⬆ Import CSV
+    </a>
+
+    <a href="{% url 'export_csv' %}" class="btn btn-success">
+      ⬇ Export CSV
+    </a>
+  </div>
+</div>
+
+<!-- =========================
+     TABEL MAHASISWA
+========================= -->
+<table class="table-mahasiswa">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>NPM</th>
+      <th>Email</th>
+      <th class="aksi">Aksi</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for m in mahasiswa %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ m.nama }}</td>
+      <td>{{ m.npm }}</td>
+      <td>{{ m.email }}</td>
+
+      <td class="aksi">
+        <div class="aksi-wrapper">
+          <a href="{% url 'edit_mahasiswa' m.id %}" class="btn-edit">
+            ✏️ Edit
+          </a>
+
+          <form method="post"
+                action="{% url 'delete_mahasiswa' m.id %}"
+                onsubmit="return confirm('Yakin ingin menghapus mahasiswa ini?')">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete">
+              🗑️ Delete
+            </button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="5" style="text-align:center;">
+        Belum ada data mahasiswa
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

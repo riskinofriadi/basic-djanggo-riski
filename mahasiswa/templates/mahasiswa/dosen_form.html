@@ -1,0 +1,46 @@
+{% extends 'mahasiswa/base.html' %}
+{% block title %}Tambah Dosen{% endblock %}
+
+{% block content %}
+<h1>Tambah Dosen</h1>
+<p class="subtitle">Silakan isi data dosen dengan benar</p>
+
+<form method="post" novalidate>
+
+  {% csrf_token %}
+
+  <div style="display:grid; grid-template-columns: 150px 1fr; gap:12px;">
+
+    <label>Nama</label>
+    {{ form.nama }}
+
+    <label>NIDN</label>
+    {{ form.nidn }}
+
+    <label>Email</label>
+    {{ form.email }}
+
+    <label>No HP</label>
+    {{ form.no_hp }}
+
+    <label>Alamat</label>
+    {{ form.alamat }}
+
+    <label>Homebase</label>
+    {{ form.homebase }}
+
+  </div>
+
+  <div class="form-actions">
+  <button type="submit" class="btn-primary">
+    💾 Simpan
+  </button>
+
+  <a href="/dosen/" class="btn-secondary">
+    ← Kembali
+  </a>
+</div>
+
+
+</form>
+{% endblock %}

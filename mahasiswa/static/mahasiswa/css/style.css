@@ -1,0 +1,110 @@
+/* ========================
+   TOOLBAR
+======================== */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.toolbar-left h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.toolbar-right {
+  display: flex;
+  gap: 10px;
+}
+
+/* ========================
+   BUTTON UMUM
+======================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary { background: #2563eb; }   /* Tambah */
+.btn-warning { background: #f59e0b; }   /* Import */
+.btn-success { background: #16a34a; }   /* Export */
+.btn-secondary { background: #64748b; }
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* ========================
+   TABEL
+======================== */
+.table-mahasiswa {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-mahasiswa thead {
+  background: #2563eb;
+  color: #fff;
+}
+
+.table-mahasiswa th,
+.table-mahasiswa td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-mahasiswa tr:hover {
+  background: #f9fafb;
+}
+
+.aksi {
+  text-align: center;
+}
+
+/* ========================
+   TOMBOL AKSI (EDIT / DELETE)
+======================== */
+.aksi-wrapper {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn-edit {
+  background: #f59e0b;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn-delete {
+  background: #dc2626;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+  opacity: 0.9;
+}

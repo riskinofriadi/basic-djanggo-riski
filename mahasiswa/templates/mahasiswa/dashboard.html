@@ -1,0 +1,95 @@
+{% extends 'mahasiswa/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<style>
+  .dashboard-title {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .dashboard-subtitle {
+    color: #6b7280;
+    margin-bottom: 30px;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .dashboard-card {
+    background: #f9fafb;
+    border-radius: 14px;
+    padding: 30px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #111827;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+    transition: all 0.2s ease;
+  }
+
+  .dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+  }
+
+  .dashboard-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .dashboard-label {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .dashboard-desc {
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 6px;
+  }
+
+  .dashboard-card.admin {
+    background: #111827;
+    color: white;
+  }
+
+  .dashboard-card.admin .dashboard-desc {
+    color: #d1d5db;
+  }
+</style>
+
+<h1 class="dashboard-title">Dashboard Akademik</h1>
+<p class="dashboard-subtitle">Kelola data akademik dengan cepat dan terstruktur</p>
+
+<div class="dashboard-grid">
+  <a href="/mahasiswa/" class="dashboard-card">
+    <div class="dashboard-icon">🎓</div>
+    <div class="dashboard-label">Mahasiswa</div>
+    <div class="dashboard-desc">Kelola data mahasiswa</div>
+  </a>
+
+  <a href="/dosen/" class="dashboard-card">
+    <div class="dashboard-icon">👨‍🏫</div>
+    <div class="dashboard-label">Dosen</div>
+    <div class="dashboard-desc">Kelola data dosen</div>
+  </a>
+
+  <a href="/matakuliah/" class="dashboard-card">
+    <div class="dashboard-icon">📚</div>
+    <div class="dashboard-label">Mata Kuliah</div>
+    <div class="dashboard-desc">Kelola mata kuliah</div>
+  </a>
+
+  <a href="/admin/" class="dashboard-card admin">
+    <div class="dashboard-icon">⚙️</div>
+    <div class="dashboard-label">Admin</div>
+    <div class="dashboard-desc">Pengaturan sistem</div>
+  </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'mahasiswa/base.html' %}
+
+{% block title %}Tambah Mahasiswa{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+
+<form method="post" novalidate>
+  {% csrf_token %}
+
+  <div style="margin-bottom:15px;">
+    <label>Nama</label>
+    {{ form.nama }}
+    {{ form.nama.errors }}
+  </div>
+
+  <div style="margin-bottom:15px;">
+    <label>NPM</label>
+    {{ form.npm }}
+    {{ form.npm.errors }}
+  </div>
+
+  <div style="margin-bottom:15px;">
+    <label>Email</label>
+    {{ form.email }}
+    {{ form.email.errors }}
+  </div>
+
+  <div class="form-actions">
+  <button type="submit" class="btn-primary">
+    💾 Simpan
+  </button>
+
+  <a href="/mahasiswa/" class="btn-secondary">
+    ← Kembali
+  </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "mahasiswa/base.html" %}
+{% block content %}
+
+<h2>Import Data Dosen (CSV)</h2>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<a href="{% url 'dosen_list' %}">← Kembali</a>
+
+{% endblock %}
